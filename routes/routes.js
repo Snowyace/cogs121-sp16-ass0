@@ -13,8 +13,8 @@ exports.root = function(req, res) {
 }
 
 exports.message = function(req,res){
-    
-    var email = new emaildb({email: req.body.email, content: req.body.content, created: new Date()});
+    var date = new Date().toLocaleString();
+    var email = new emaildb({email: req.body.email, content: req.body.content, created: date});
 	email.save(afterSaving);
 
     function afterSaving(err){
