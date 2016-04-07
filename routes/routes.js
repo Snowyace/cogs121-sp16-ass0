@@ -13,11 +13,14 @@ exports.root = function(req, res) {
 }
 
 exports.message = function(req,res){
-    function afterSaving(err){
-        if(err){console.log(err); res.send(500);}
-    }
+    
     var email = new emaildb({email: req.body.email, content: req.body.content, created: new Date()});
 	email.save(afterSaving);
+
+    function afterSaving(err){
+        //console.log(err);
+        res.redirect(303, '/');
+    }
 	/*
 	emaildb.update({email: req.body.email},{content: req.body.content},{runValidators: true},function(err){
         if(err){
