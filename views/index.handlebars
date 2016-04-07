@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <form action="/message" method="post">
+    	Email: <input type="text" name="email"><br>
+    	Content: <textarea name="content"></textarea><br>
+    	<input type="submit" value="Submit">
+    </form>
+    {{#if data}}
+    <h3>My Messages</h3>
+    <table>
+    	<thead>
+    		<th>Email</th>
+    		<th>Content</th>
+    		<th>Date</th>
+    	</thead>
+    	<tbody>
+    		{{#each data}}
+    		<tr>
+    			<td>{{email}}</td>
+    			<td>{{content}}</td>
+    			<td>{{created}}</td>
+    		</tr>
+    		{{/each}}
+    	</tbody>
+    </table>
+    {{/if}}
+</body>
+
+</html>
